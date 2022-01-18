@@ -1,9 +1,11 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 // import { Modal } from '../Modal';
 // import { SearchBar } from '../SearchBar';
 // import { ImageGallery } from '../ImageGallery';
+import { Navigation } from '../Navigation';
 
 export default function App() {
+  <Navigation />;
   // const [searchQuery, setSearchQuery] = useState('');
   // const [showModal, setShowModal] = useState(false);
   // const [modalImg, setModalImg] = useState({});
