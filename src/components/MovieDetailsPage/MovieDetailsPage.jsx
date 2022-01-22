@@ -3,7 +3,7 @@ import { useParams, Outlet, NavLink } from 'react-router-dom';
 import { apiService } from '../../apiServise';
 import s from './MovieDetailsPage.module.scss';
 
-export function MovieDetailsPage() {
+export default function MovieDetailsPage() {
   const [film, setFilm] = useState({});
   const { movieId } = useParams();
   const { poster_path, original_title, vote_average, vote_count, popularity, overview } = film;

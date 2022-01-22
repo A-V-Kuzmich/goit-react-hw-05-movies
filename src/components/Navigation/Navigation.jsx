@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import s from './Navigation.module.scss';
 
-export const Navigation = () => (
+const Navigation = () => (
   <nav className={s.Navigation}>
     <NavLink to="/" className={({ isActive }) => s.link + ' ' + (isActive ? s.ActiveL : '')}>
       HomePage
@@ -12,3 +12,4 @@ export const Navigation = () => (
     </NavLink>
   </nav>
 );
+export default Navigation;

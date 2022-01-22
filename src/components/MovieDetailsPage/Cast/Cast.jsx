@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { apiService } from '../../../apiServise';
 import { useParams } from 'react-router-dom';
 
-export function Cast() {
+export default function Cast() {
   const [credits, setCredits] = useState([]);
   const { movieId } = useParams();
 
@@ -35,17 +35,3 @@ export function Cast() {
     </ul>
   );
 }
-
-/* 
-adult: false
-cast_id: 1
-character: "Peter Parker / Spider-Man"
-credit_id: "5d8e28d38289a0000fcc32f9"
-gender: 2
-id: 1136406
-known_for_department: "Acting"
-name: "Tom Holland"
-order: 0
-original_name: "Tom Holland"
-popularity: 129.942
-profile_path: "/2qhIDp44cAqP2clOgt2afQI07X8.jpg" */
