@@ -5,7 +5,7 @@ import { Navigation } from '../Navigation';
 import { HomePage } from '../HomePage/HomePage';
 import { MovieDetailsPage } from '../MovieDetailsPage';
 import { Cast } from '../MovieDetailsPage/Cast';
-import { Reviews } from '../Reviews';
+import { Reviews } from '../MovieDetailsPage/Reviews';
 import { MoviesPage } from '../MoviesPage';
 
 export default function App() {

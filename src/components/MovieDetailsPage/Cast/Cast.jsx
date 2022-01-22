@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { apiService } from '../../../apiServise/apiServise';
+import { apiService } from '../../../apiServise';
 import { useParams } from 'react-router-dom';
 
 export function Cast() {

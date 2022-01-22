@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Outlet, NavLink } from 'react-router-dom';
-import { apiService } from '../../apiServise/apiServise';
+import { apiService } from '../../apiServise';
 import s from './MovieDetailsPage.module.scss';
 
 export function MovieDetailsPage() {
