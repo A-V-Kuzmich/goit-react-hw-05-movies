@@ -20,7 +20,7 @@ axios.defaults.params = {
   append_to_response: 'videos',
 };
 
-export async function ApiService(url, config) {
+export async function apiService(url, config) {
   let response = await axios.get(`${url}`, { params: config });
   //   let response = await axios({
   //     metod: 'get',

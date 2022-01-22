@@ -1,13 +1,11 @@
-// import { useState } from 'react';
-// import { Modal } from '../Modal';
-// import { SearchBar } from '../SearchBar';
-// import { ImageGallery } from '../ImageGallery';
 import { Routes, Route } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { ApiService } from '../ApiServise/ApiServise';
+// import { useEffect, useState } from 'react';
+// import { ApiService } from '../../apiServise/apiServise';
 import { Navigation } from '../Navigation';
 import { HomePage } from '../HomePage/HomePage';
 import { MovieDetailsPage } from '../MovieDetailsPage';
+import { Cast } from '../Cast';
+import { Reviews } from '../Reviews';
 
 export default function App() {
   const hendleMove = e => {
@@ -25,8 +23,11 @@ export default function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage click={hendleMove} />} />
-        <Route path="/movies/:movieId" element={<MovieDetailsPage id={hendleMove} />} />
-        <Route path="*" element={<h1>sorry</h1>} />
+        <Route path="movies/:movieId/" element={<MovieDetailsPage />}>
+          <Route path=":movieId/cast" element={<Cast />} />
+          <Route path=":movieId/reviews" element={<Reviews />} />
+        </Route>
+        {/* <Route path="*" element={<h1>sorry</h1>} /> */}
       </Routes>
     </>
   );

@@ -1,6 +1,6 @@
 import s from './HomePage.module.scss';
 import { useEffect, useState } from 'react';
-import { ApiService } from '../ApiServise/ApiServise';
+import { apiService } from '../../apiServise/apiServise';
 import { Link } from 'react-router-dom';
 
 export function HomePage({ click }) {
@@ -8,7 +8,7 @@ export function HomePage({ click }) {
 
   useEffect(() => {
     async function getFilm() {
-      const result = await ApiService('trending/movie/week');
+      const result = await apiService('trending/movie/week');
       setFilmArray(result.results);
     }
     getFilm();
