@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react/cjs/react.development';
+import { useEffect, useState } from 'react';
 import { apiService } from '../../apiServise';
 import MoviesList from '../MoviesList';
 import s from './HomePage.module.scss';
 
 export default function HomePage() {
-  const [filmArray, setFilmArray] = useState([]);
   const [page, setPage] = useState(1);
+  const [filmArray, setFilmArray] = useState([]);
 
   useEffect(() => {
     getFilm({ page });

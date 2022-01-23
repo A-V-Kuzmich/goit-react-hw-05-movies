@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import s from './MoviesList.module.scss';
 
 export default function MoviesList({ array, loadMore }) {
-  console.log(array);
   return (
     <>
       <ul className={s.gallery}>

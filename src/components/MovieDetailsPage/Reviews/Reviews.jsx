@@ -17,14 +17,14 @@ export default function Reviews() {
 
   return (
     <ul className={s.list}>
-      {reviews &&
+      {reviews.length !== 0 &&
         reviews.map(({ content, author, id }) => (
           <li key={id} className={s.item}>
             <h3 className={s.author}>{author}</h3>
             <p className={s.content}>{content}</p>
           </li>
         ))}
-      {reviews.length !== 0 && (
+      {reviews.length === 0 && (
         <li>
           <h2>Sorry, there's nothing here</h2>
         </li>
