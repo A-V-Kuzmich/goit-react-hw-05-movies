@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { apiService } from '../../../apiServise';
 import { useParams } from 'react-router-dom';
-// import s from './Reviews.module.scss';
+import s from './Reviews.module.scss';
 
 export default function Reviews() {
   const [reviews, setReviews] = useState([]);
@@ -16,15 +16,19 @@ export default function Reviews() {
   }, [movieId]);
 
   return (
-    <ul>
-      {reviews.map(({ content, author, created_at, id, author_details: { avatar_path } }) => (
-        <li key={id}>
-          {avatar_path && <img src={`${avatar_path}`} alt={author} />}
-          <h3>{author}</h3>
-          <span>{created_at}</span>
-          <p>{content}</p>
+    <ul className={s.list}>
+      {reviews &&
+        reviews.map(({ content, author, id }) => (
+          <li key={id} className={s.item}>
+            <h3 className={s.author}>{author}</h3>
+            <p className={s.content}>{content}</p>
+          </li>
+        ))}
+      {!reviews.length && (
+        <li>
+          <h2>Sorry, there's nothing here</h2>
         </li>
-      ))}
+      )}
     </ul>
   );
 }

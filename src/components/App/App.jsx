@@ -3,10 +3,11 @@ import { lazy, Suspense, useEffect, useState } from 'react';
 
 import { apiService } from '../../apiServise/apiServise';
 
-import Loader from 'react-loader-spinner';
 import Navigation from '../Navigation';
 import HomePage from '../HomePage';
 import MoviesList from '../MoviesList';
+import { Loader } from '../Loader';
+import './App.scss';
 
 const MovieDetailsPage = lazy(() =>
   import('../MovieDetailsPage' /*webpackChunkName: "MovieDetails"*/),

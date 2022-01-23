@@ -1,0 +1,29 @@
+$color: #16a085;
+
+.SearchForm {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+.SearchFormInput {
+  background-color: initial;
+  border: none;
+  border-bottom: 0.5px solid $color;
+  padding: 0 20px 4px 0;
+  color: #fff;
+  outline: none;
+  transition: border-bottom 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 336px;
+  //---------
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+.SearchFormButton {
+  color: $color;
+  border: none;
+  background-color: inherit;
+  transform: translateX(-100%);
+  padding: 0;
+}

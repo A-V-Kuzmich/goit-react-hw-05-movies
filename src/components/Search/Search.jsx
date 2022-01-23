@@ -17,10 +17,6 @@ export function Search() {
   return (
     <>
       <form onSubmit={handleSubmitt} className={s.SearchForm}>
-        <button type="submit" className={s.SearchFormButton}>
-          <span className="material-icons">search</span>
-        </button>
-
         <input
           value={searchQuery}
           onChange={({ currentTarget: { value } }) => setSearchQuery(value)}
@@ -30,6 +26,9 @@ export function Search() {
           autoFocus
           placeholder="Search movies"
         />
+        <button type="submit" className={s.SearchFormButton}>
+          <span className="material-icons">search</span>
+        </button>
       </form>
     </>
   );

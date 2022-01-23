@@ -1,0 +1,17 @@
+$timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+$animation-duration: 250ms;
+$color2: #16a085;
+$colorAcent: #eb0000;
+$colorAcentText: #87e6d3;
+
+.list {
+  margin-top: 40px;
+  padding: 0 20px 0 20px;
+}
+.item {
+  margin-bottom: 20px;
+}
+.author {
+  color: $color2;
+  margin-bottom: 10px;
+}

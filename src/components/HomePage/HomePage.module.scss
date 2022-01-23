@@ -1,0 +1,10 @@
+$colorAcentText: #87e6d3;
+$colorAcent: #9bf2d3;
+
+.title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20px;
+  color: $colorAcent;
+}

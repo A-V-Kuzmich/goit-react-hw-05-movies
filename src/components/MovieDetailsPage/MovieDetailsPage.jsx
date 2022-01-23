@@ -6,7 +6,8 @@ import s from './MovieDetailsPage.module.scss';
 export default function MovieDetailsPage() {
   const [film, setFilm] = useState({});
   const { movieId } = useParams();
-  const { poster_path, original_title, vote_average, vote_count, popularity, overview } = film;
+  const { poster_path, original_title, vote_average, vote_count, popularity, overview, genres } =
+    film;
 
   useEffect(() => {
     async function getFilm() {
@@ -15,11 +16,12 @@ export default function MovieDetailsPage() {
     }
     getFilm();
   }, [movieId]);
+  console.log(film);
 
   return (
     <>
       <div className={s.container}>
-        <div>
+        <div className={s.imgContainer}>
           <img
             src={
               poster_path
@@ -28,62 +30,37 @@ export default function MovieDetailsPage() {
             }
             alt={original_title}
           />
-          {/* <img
-      class='film__trailer-img'
-      data-modal='modal-video-btn'
-      src='https://cdn.icon-icons.com/icons2/1584/PNG/512/3721679-youtube_108064.png'
-      alt='trailer'
-    /> */}
         </div>
-        <div>
+        <div className={s.infoContainer}>
           <h3>{original_title}</h3>
-
           <div>
-            <ul>
-              <li>Vote/Votes</li>
-              <li>
-                <span>&nbsp{vote_average}&nbsp</span>/ &nbsp{vote_count}
-              </li>
-            </ul>
-            <ul>
-              <li>Popularity</li>
-              <li>{popularity}</li>
-            </ul>
-            <ul>
-              <li>Original Title</li>
-              <li>{original_title}</li>
-            </ul>
-            <ul>
-              <li>Genre</li>
-              {/* <ul class='modal__film-data modal__genres-list'>
-          {{#each genres}}
-            <li class='modal__film-data modal__genres-item'>{{this.name}}</li>
-          {{/each}}
-        </ul> */}
-            </ul>
+            <span className={s.textContainer}>
+              Vote/Votes: {vote_average} / {vote_count}
+            </span>
+            <span className={s.textContainer}>Popularity: {popularity}</span>
+            <span className={s.textContainer}>Genre:</span>
+            <ul>{genres && genres.map(({ name, id }) => <li key={id}>{name}</li>)}</ul>
           </div>
-          <h4>About</h4>
-          <p>{overview}</p>
-          <ul>
-            <li>
-              <NavLink
-                to="cast"
-                className={({ isActive }) => s.link + ' ' + (isActive ? s.ActiveL : '')}
-              >
-                Cast
-              </NavLink>
-              {/* <button type="button">add to Watched</button> */}
-            </li>
-            <li>
-              <NavLink
-                to="reviews"
-                className={({ isActive }) => s.link + ' ' + (isActive ? s.ActiveL : '')}
-              >
-                Reviews
-              </NavLink>
-              {/* <button type="button">add to queue</button> */}
-            </li>
-          </ul>
+
+          <p>
+            <span className={s.textContainer}>About:</span>
+            {overview}
+          </p>
+
+          <div className={s.containerLink}>
+            <NavLink
+              to="cast"
+              className={({ isActive }) => s.link + ' ' + (isActive ? s.ActiveL : '')}
+            >
+              Cast
+            </NavLink>
+            <NavLink
+              to="reviews"
+              className={({ isActive }) => s.link + ' ' + (isActive ? s.ActiveL : '')}
+            >
+              Reviews
+            </NavLink>
+          </div>
         </div>
       </div>
       <Outlet />
