@@ -24,7 +24,7 @@ export default function Reviews() {
             <p className={s.content}>{content}</p>
           </li>
         ))}
-      {!reviews.length && (
+      {reviews.length !== 0 && (
         <li>
           <h2>Sorry, there's nothing here</h2>
         </li>

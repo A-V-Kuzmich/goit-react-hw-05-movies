@@ -17,7 +17,7 @@ export default function Cast() {
 
   return (
     <ul className={s.list}>
-      {credits.length &&
+      {credits.length !== 0 &&
         credits.map(({ profile_path, name, character, id }) => (
           <li key={id} className={s.item}>
             <img
@@ -36,7 +36,7 @@ export default function Cast() {
             </div>
           </li>
         ))}
-      {!credits.length && (
+      {credits.length === 0 && (
         <li>
           <h2>Sorry, there's nothing here</h2>
         </li>
