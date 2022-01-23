@@ -50,7 +50,7 @@ export default function MovieDetailsPage() {
             alt={original_title}
           />
           <img
-            onClick={() => toggleModal()}
+            onClick={toggleModal}
             className={s.video}
             height="50px"
             width="50px"

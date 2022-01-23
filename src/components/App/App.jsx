@@ -18,6 +18,7 @@ const Reviews = lazy(() => import('../MovieDetailsPage/Reviews' /* webpackChunkN
 
 export default function App() {
   const [filmArray, setFilmArray] = useState([]);
+  const [page, setPage] = useState(1);
 
   const location = useLocation();
   const searchParam = new URLSearchParams(location.search).get('query') ?? '';
@@ -26,16 +27,17 @@ export default function App() {
     if (searchParam === '') {
       return;
     }
-    async function getFilmByQuery(query) {
-      const { results } = await apiService('search/movie', {
-        query: query,
-        page: 1,
-      });
-      setFilmArray(results);
-    }
+    getFilmByQuery({ query: searchParam, page });
+  }, [page, searchParam]);
 
-    getFilmByQuery(searchParam);
-  }, [searchParam]);
+  async function getFilmByQuery(config) {
+    const { results } = await apiService('search/movie', config);
+    setFilmArray(prev => [...prev, ...results]);
+  }
+
+  const increment = () => {
+    setPage(page + 1);
+  };
 
   return (
     <>
@@ -48,7 +50,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
 
             <Route path="movies/*" element={<MoviesPage />}>
-              <Route path="*" element={<MoviesList array={filmArray} />} />
+              <Route path="*" element={<MoviesList array={filmArray} loadMore={increment} />} />
 
               <Route path=":movieId" element={<MovieDetailsPage />}>
                 <Route path="cast" element={<Cast />} />
