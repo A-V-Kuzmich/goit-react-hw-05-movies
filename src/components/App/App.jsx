@@ -7,7 +7,7 @@ import Navigation from '../Navigation';
 import HomePage from '../HomePage';
 import MoviesList from '../MoviesList';
 import { Loader } from '../Loader';
-import './App.scss';
+import { Notification } from '../Notification';
 
 const MovieDetailsPage = lazy(() =>
   import('../MovieDetailsPage' /*webpackChunkName: "MovieDetails"*/),
@@ -56,7 +56,7 @@ export default function App() {
               </Route>
             </Route>
 
-            <Route path="*" element={<h1>sorry</h1>} />
+            <Route path="*" element={<Notification title="Sorry" text="Something went wrong" />} />
           </Routes>
         </main>
         <footer />

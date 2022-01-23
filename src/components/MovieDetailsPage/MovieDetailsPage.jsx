@@ -1,13 +1,26 @@
 import { useEffect, useState } from 'react';
 import { useParams, Outlet, NavLink } from 'react-router-dom';
 import { apiService } from '../../apiServise';
+import Modal from '../Modal/Modal';
+import Video from '../Video';
 import s from './MovieDetailsPage.module.scss';
 
 export default function MovieDetailsPage() {
   const [film, setFilm] = useState({});
+  const [showModal, setShowModal] = useState(false);
+  const [videoList, setVideoList] = useState();
+
   const { movieId } = useParams();
-  const { poster_path, original_title, vote_average, vote_count, popularity, overview, genres } =
-    film;
+  const {
+    poster_path,
+    original_title,
+    vote_average,
+    vote_count,
+    popularity,
+    overview,
+    genres,
+    videos,
+  } = film;
 
   useEffect(() => {
     async function getFilm() {
@@ -16,7 +29,13 @@ export default function MovieDetailsPage() {
     }
     getFilm();
   }, [movieId]);
-  console.log(film);
+
+  const toggleModal = () => {
+    if (!showModal) {
+      setVideoList(videos.results.map(value => value.key).join(','));
+    }
+    setShowModal(!showModal);
+  };
 
   return (
     <>
@@ -29,6 +48,14 @@ export default function MovieDetailsPage() {
                 : 'https://github.com/A-V-Kuzmich/filmoteka/blob/main/src/images/content/no-image-poster.png?raw=true'
             }
             alt={original_title}
+          />
+          <img
+            onClick={() => toggleModal()}
+            className={s.video}
+            height="50px"
+            width="50px"
+            src="https://cdn.icon-icons.com/icons2/1584/PNG/512/3721679-youtube_108064.png"
+            alt="trailer ico"
           />
         </div>
         <div className={s.infoContainer}>
@@ -64,6 +91,11 @@ export default function MovieDetailsPage() {
         </div>
       </div>
       <Outlet />
+      {showModal && (
+        <Modal onClose={toggleModal}>
+          <Video list={videoList} />
+        </Modal>
+      )}
     </>
   );
 }
