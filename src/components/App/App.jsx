@@ -32,6 +32,10 @@ export default function App() {
 
   async function getFilmByQuery(config) {
     const { results } = await apiService('search/movie', config);
+    if (results.length === 0) {
+      Notification(' Nothing found', 'Please enter a more specific request');
+      return;
+    }
     setFilmArray(prev => [...prev, ...results]);
   }
 
