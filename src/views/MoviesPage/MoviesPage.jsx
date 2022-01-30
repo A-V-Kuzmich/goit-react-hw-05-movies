@@ -1,5 +1,5 @@
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
-import { Search } from '../Search';
+import { Search } from '../../components/Search';
 import s from './MoviesPage.module.scss';
 
 export default function MoviesPage() {

@@ -8,7 +8,7 @@ export function Search() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleSubmitt = e => {
+  const handleSubmit = e => {
     e.preventDefault();
     navigate({ ...location, search: `query=${searchQuery}` });
     setSearchQuery('');
@@ -16,7 +16,7 @@ export function Search() {
 
   return (
     <>
-      <form onSubmit={handleSubmitt} className={s.SearchForm}>
+      <form onSubmit={handleSubmit} className={s.SearchForm}>
         <input
           value={searchQuery}
           onChange={({ currentTarget: { value } }) => setSearchQuery(value)}

@@ -8,11 +8,10 @@ export default function Reviews() {
   const { movieId } = useParams();
 
   useEffect(() => {
-    async function getFilm() {
+    (async function getFilm() {
       const { results } = await apiService(`movie/${movieId}/reviews`);
       setReviews(results);
-    }
-    getFilm();
+    })();
   }, [movieId]);
 
   return (

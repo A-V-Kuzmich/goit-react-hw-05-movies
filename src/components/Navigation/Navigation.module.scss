@@ -4,13 +4,10 @@ $colorAcentText: #87e6d3;
 $timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 $animation-duration: 250ms;
 
-.Navigation {
+.navigation {
   display: flex;
   min-height: 64px;
-  padding-right: 24px;
-  padding-left: 24px;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding: 12px 24px;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.7);
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
@@ -20,7 +17,6 @@ $animation-duration: 250ms;
 .link {
   display: inline-block;
   padding: 12px;
-  font-size: 16px;
   position: relative;
   left: 40px;
   border: none;
@@ -54,7 +50,7 @@ $animation-duration: 250ms;
     transform: scale(1);
   }
 }
-.ActiveL {
+.activeL {
   color: $colorAcentText;
   &:after {
     content: '';

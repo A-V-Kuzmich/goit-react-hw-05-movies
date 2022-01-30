@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams, Outlet, NavLink } from 'react-router-dom';
 import { apiService } from '../../apiServise';
-import Modal from '../Modal/Modal';
-import Video from '../Video';
+import Modal from '../../components/Modal/Modal';
+import Video from '../../components/Video';
 import s from './MovieDetailsPage.module.scss';
 
 export default function MovieDetailsPage() {
@@ -23,11 +23,10 @@ export default function MovieDetailsPage() {
   } = film;
 
   useEffect(() => {
-    async function getFilm() {
+    (async function getFilm() {
       const result = await apiService(`movie/${movieId}`);
       setFilm(result);
-    }
-    getFilm();
+    })();
   }, [movieId]);
 
   const toggleModal = () => {

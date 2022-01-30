@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import allert from 'sweetalert';
+import alert from 'sweetalert';
 
 export function Notification(title, text) {
-  allert({
+  alert({
     title: `${title}`,
     text: `${text}`,
     icon: 'warning',

@@ -8,11 +8,10 @@ export default function Cast() {
   const { movieId } = useParams();
 
   useEffect(() => {
-    async function getFilm() {
+    (async function getFilm() {
       const { cast } = await apiService(`movie/${movieId}/credits`);
       setCredits(cast);
-    }
-    getFilm();
+    })();
   }, [movieId]);
 
   return (
