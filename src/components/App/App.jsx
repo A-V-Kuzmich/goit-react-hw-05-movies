@@ -28,10 +28,15 @@ export default function App() {
   const searchParam = new URLSearchParams(location.search).get('query') ?? '';
 
   useEffect(() => {
+    setFilmArray([]);
+    setPage(1);
+  }, [searchParam]);
+
+  useEffect(() => {
     if (searchParam === '') {
       return;
     }
-    (async function getFilmByQuery() {
+    (async () => {
       const { results } = await apiService('search/movie', { query: searchParam, page });
       if (results.length === 0) {
         Notification(' Nothing found', 'Please enter a more specific request');

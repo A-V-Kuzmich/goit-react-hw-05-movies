@@ -1,15 +1,20 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import PropTypes from 'prop-types';
 import s from './MoviesList.module.scss';
 
 export default function MoviesList({ array, loadMore }) {
+  const location = useLocation();
   return (
     <>
       <ul className={s.gallery}>
         {array.map(({ id, poster_path, title }) => (
           <li key={id} className={s.GalleryItem}>
-            <NavLink to={`../../movies/${id}`} className={s.imageContainer}>
+            <NavLink
+              to={`../../movies/${id}`}
+              state={{ from: location }}
+              className={s.imageContainer}
+            >
               <div>
                 <img
                   className={s.image}

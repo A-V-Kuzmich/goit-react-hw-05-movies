@@ -8,6 +8,5 @@ axios.defaults.params = {
 
 export async function apiService(url, config) {
   let { data } = await axios.get(url, { params: config });
-  console.log(data);
   return data;
 }

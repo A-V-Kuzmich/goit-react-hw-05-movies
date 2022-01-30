@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Outlet, NavLink } from 'react-router-dom';
+import { useParams, Outlet, NavLink, useLocation } from 'react-router-dom';
 import { apiService } from '../../apiServise';
 import Modal from '../../components/Modal/Modal';
 import Video from '../../components/Video';
@@ -9,6 +9,7 @@ export default function MovieDetailsPage() {
   const [film, setFilm] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [videoList, setVideoList] = useState();
+  const location = useLocation();
 
   const { movieId } = useParams();
   const {
@@ -67,7 +68,6 @@ export default function MovieDetailsPage() {
             <span className={s.textContainer}>Genre:</span>
             <ul>{genres && genres.map(({ name, id }) => <li key={id}>{name}</li>)}</ul>
           </div>
-
           <p>
             <span className={s.textContainer}>About:</span>
             {overview}
@@ -76,12 +76,14 @@ export default function MovieDetailsPage() {
           <div className={s.containerLink}>
             <NavLink
               to="cast"
+              state={{ from: location.state.from } ?? ''}
               className={({ isActive }) => s.link + ' ' + (isActive ? s.ActiveL : '')}
             >
               Cast
             </NavLink>
             <NavLink
               to="reviews"
+              state={{ from: location.state.from } ?? ''}
               className={({ isActive }) => s.link + ' ' + (isActive ? s.ActiveL : '')}
             >
               Reviews
